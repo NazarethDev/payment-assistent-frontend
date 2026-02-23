@@ -6,7 +6,7 @@ import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-//import './api/paymentoAssistentApiInterceptors.js';
+import './api/paymentoAssistentApiInterceptors.js';
 
 document.documentElement.setAttribute('data-bs-theme', 'dark');
 

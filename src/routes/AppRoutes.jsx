@@ -11,8 +11,8 @@ import StatisticsPage from "../pages/StatisticsPage/index.jsx";
 export default function AppRoutes() {
     return (
         <Routes>
-            <Route path="/" element={<InitialPage />} />
-            <Route path="/login" element={< LoginPage />} />
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/home" element={< InitialPage />} />
             <Route path="/lista-de-boletos" element={< BillsPage />} />
             <Route path="/lista-de-beneficiarios" element={<RecipientsPage />} />
             <Route path="/novo-boleto" element={< NewBillPage />} />

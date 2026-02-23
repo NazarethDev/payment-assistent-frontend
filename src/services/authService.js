@@ -1,12 +1,15 @@
-import { setGlobalToken } from "../hooks/tokenAccessor.js"
-import { paymenteAssistentApi } from "../api/paymentAssistentApi.js"
+import { paymenteAssistentApi } from "../api/paymentAssistentApi";
+import { setToken } from "../hooks/useAuthStore";
 
-export async function login(email, password) {
-    const response = await paymenteAssistentApi.post("/auth/login", { email, password });
+export async function login(username, password) {
+    const response = await paymenteAssistentApi.post("/auth/login", {
+        username,
+        password
+    });
 
     const token = response.data.token;
 
-    setGlobalToken(token);
+    setToken(token);
 
     return token;
 }

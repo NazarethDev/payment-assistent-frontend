@@ -1,28 +1,35 @@
-let authToken = null;
+import React from "react";
+import { setGlobalToken, getToken } from "./tokenAccessor";
+
 let listeners = [];
 
-function setToken(newToken) {
-    authToken = newToken;
-    listeners.forEach(l => l(authToken));
+function notify(token) {
+    listeners.forEach(l => l(token));
 }
 
-function subscribe(listener) {
-    listeners.push(listener);
-    return () => {
-        listeners = listeners.filter(l => l !== listener);
-    };
+export function setToken(token) {
+    setGlobalToken(token);
+    notify(token);
+}
+
+export function logout() {
+    setToken(null);
 }
 
 export function useAuthStore() {
-    const [token, setLocalToken] = React.useState(authToken);
+    const [token, setLocalToken] = React.useState(getToken());
 
     React.useEffect(() => {
-        return subscribe(setLocalToken);
+        const listener = (t) => setLocalToken(t);
+        listeners.push(listener);
+
+        return () => {
+            listeners = listeners.filter(l => l !== listener);
+        };
     }, []);
 
     return {
         token,
-        setToken,
-        logout: () => setToken(null)
+        isAuthenticated: !!token
     };
 }

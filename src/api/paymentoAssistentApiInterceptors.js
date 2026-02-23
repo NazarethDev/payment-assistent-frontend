@@ -1,7 +1,7 @@
-import { api } from "./paymentAssistentApi.js"
+import { paymenteAssistentApi } from "./paymentAssistentApi.js"
 import { getToken } from "../hooks/tokenAccessor.js"
 
-api.interceptors.request.use((config) => {
+paymenteAssistentApi.interceptors.request.use((config) => {
     const token = getToken();
 
     if (token) {
@@ -11,7 +11,7 @@ api.interceptors.request.use((config) => {
     return config;
 });
 
-api.interceptors.response.use(
+paymenteAssistentApi.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response?.status === 401) {
