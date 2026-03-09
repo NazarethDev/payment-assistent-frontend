@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { login } from "../../services/authService.js";
+import { useAuth } from "../../context/AuthContext.jsx";
+import { login as loginRequest } from "../../services/authService.js";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function LoginPage() {
 
@@ -8,14 +9,21 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
 
+    const { login } = useAuth();
+
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         try {
-            await login(username, password);
-            navigate("/");
+
+            const token = await loginRequest(username, password);
+
+            login(token);
+
+            navigate("/home");
+
         } catch (err) {
             setError("Usuário ou senha inválidos");
         }
@@ -38,6 +46,7 @@ export default function LoginPage() {
                         className="form-control"
                         placeholder="nome de usuário"
                         value={username}
+                        required
                         onChange={e => setUsername(e.target.value)}
                     />
                 </div>
@@ -48,6 +57,7 @@ export default function LoginPage() {
                         className="form-control"
                         placeholder="senha"
                         value={password}
+                        required
                         onChange={e => setPassword(e.target.value)}
                     />
                 </div>

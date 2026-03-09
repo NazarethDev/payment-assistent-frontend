@@ -1,7 +1,9 @@
+import NewRecipientFormComponent from "../../components/NewRecipientFormComponent"
+
 export default function NewRecipientPage(){
     return (
         <>
-            New recipient page works 🚀
+            <NewRecipientFormComponent />
         </>
     )
 }

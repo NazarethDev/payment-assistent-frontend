@@ -14,7 +14,6 @@ function App() {
 
       <main className="flex-fill pt-5 overflow-x-hidden">
         <AppRoutes />
-
       </main>
 
       < FooterComponent />
