@@ -12,6 +12,7 @@
   "dependencies": {
     "@zxing/browser": "^0.1.5",
     "axios": "^1.13.5",
+    "boleto.js": "^1.1.4",
     "bootstrap": "^5.3.8",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
