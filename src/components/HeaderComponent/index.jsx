@@ -1,85 +1,92 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-
 export default function HeaderComponent() {
-
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
-        setIsOpen(false)
+        setIsOpen(false);
     }, [location.pathname]);
 
     return (
+        <nav className="navbar navbar-expand-lg bg-white border-bottom shadow-sm py-3 mb-4">
+            <div className="container">
+                {/* Logo / Nome do App */}
+                <NavLink className="navbar-brand fw-bold text-primary d-flex align-items-center" to="/home">
+                    <i className="bi bi-wallet2 me-2"></i>
+                    Payment Assistant
+                </NavLink>
 
-        <nav className="navbar navbar-expand-lg w-100 overflow-x-hidden">
-            <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/home">Payment assistent</NavLink>
+                {/* Botão Mobile */}
                 <button
-                    className="navbar-toggler"
+                    className="navbar-toggler border-0"
                     type="button"
-                    aria-expanded={isOpen}
+                    onClick={() => setIsOpen(prev => !prev)}
                     aria-label="Toggle navigation"
-                    onClick={() => setIsOpen(prev => !prev)}>
-
+                >
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
+                {/* Itens de Navegação */}
                 <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`} id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <NavLink to="/home" end className={({ isActive }) =>
-                                isActive ? "nav-link active" : "nav-link"
-                            } >Home</NavLink>
-                        </li>
+                    <ul className="navbar-nav ms-auto gap-2 mt-3 mt-lg-0 align-items-lg-center">
                         <li className="nav-item">
                             <NavLink
-                                to="/novo-boleto"
+                                to="/home"
+                                end
                                 className={({ isActive }) =>
-                                    isActive ? "nav-link active" : "nav-link"
+                                    `nav-link px-3 rounded-pill ${isActive ? "active bg-primary-subtle text-primary fw-bold" : "text-secondary"}`
                                 }
                             >
-                                Novo boleto
+                                <i className="bi bi-house-door me-1"></i> Home
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink
-                                to="/novo-beneficiario"
-                                className={({ isActive }) =>
-                                    isActive ? "nav-link active" : "nav-link"
-                                }
-                            >
-                                Novo beneficiário
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                        </li>
+
                         <li className="nav-item">
                             <NavLink
                                 to="/lista-de-boletos"
                                 className={({ isActive }) =>
-                                    isActive ? "nav-link active" : "nav-link"
+                                    `nav-link px-3 rounded-pill ${isActive ? "active bg-primary-subtle text-primary fw-bold" : "text-secondary"}`
                                 }
                             >
-                                Lista de boletos
+                                <i className="bi bi-receipt me-1"></i> Boletos
                             </NavLink>
                         </li>
+
                         <li className="nav-item">
                             <NavLink
                                 to="/lista-de-beneficiarios"
                                 className={({ isActive }) =>
-                                    isActive ? "nav-link active" : "nav-link"
+                                    `nav-link px-3 rounded-pill ${isActive ? "active bg-primary-subtle text-primary fw-bold" : "text-secondary"}`
                                 }
                             >
-                                Lista de beneficiários
+                                <i className="bi bi-people me-1"></i> Beneficiários
+                            </NavLink>
+                        </li>
+
+                        {/* Divisória Vertical (Apenas Desktop) */}
+                        <div className="vr d-none d-lg-block mx-2 text-secondary-emphasis opacity-25" style={{ height: '24px' }}></div>
+
+                        {/* Grupo de Ações Rápidas */}
+                        <li className="nav-item d-flex flex-column flex-lg-row gap-2">
+                            <NavLink
+                                to="/novo-beneficiario"
+                                className="btn btn-outline-primary btn-sm rounded-pill px-3 d-inline-flex align-items-center justify-content-center"
+                            >
+                                <i className="bi bi-person-plus me-1"></i> Novo Beneficiário
+                            </NavLink>
+
+                            <NavLink
+                                to="/novo-boleto"
+                                className="btn btn-primary btn-sm rounded-pill px-3 shadow-sm d-inline-flex align-items-center justify-content-center"
+                            >
+                                <i className="bi bi-plus-lg me-1"></i> Novo Boleto
                             </NavLink>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-    )
-
+    );
 }

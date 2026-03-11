@@ -17,30 +17,35 @@ export default function DateRangeFilterComponent({ onFilter }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="row g-3 align-items-end mb-4 bg-light p-3 rounded border">
+        <form onSubmit={handleSubmit} className="row g-3 align-items-end p-4 rounded-4 border-0 shadow-sm bg-white mb-5">
+            {/* Usamos bg-white e rounded-4 para combinar com os outros componentes que fizemos */}
             <div className="col-md-4">
-                <label className="form-label small fw-bold text-muted">DATA INICIAL</label>
+                <label className="form-label small fw-bold text-secondary text-uppercase" style={{ fontSize: '0.7rem' }}>
+                    Data Inicial
+                </label>
                 <input
                     type="date"
                     name="startDate"
-                    className="form-control"
+                    className="form-control form-control-sm border-light-subtle bg-light rounded-3"
                     value={dates.startDate}
                     onChange={handleChange}
                 />
             </div>
             <div className="col-md-4">
-                <label className="form-label small fw-bold text-muted">DATA FINAL</label>
+                <label className="form-label small fw-bold text-secondary text-uppercase" style={{ fontSize: '0.7rem' }}>
+                    Data Final
+                </label>
                 <input
                     type="date"
                     name="endDate"
-                    className="form-control"
+                    className="form-control form-control-sm border-light-subtle bg-light rounded-3"
                     value={dates.endDate}
                     onChange={handleChange}
                 />
             </div>
             <div className="col-md-4">
-                <button type="submit" className="btn btn-primary w-100">
-                    <i className="bi bi-search me-2"></i>Filtrar Boletos
+                <button type="submit" className="btn btn-primary btn-sm w-100 rounded-3 fw-bold shadow-sm">
+                    <i className="bi bi-funnel me-2"></i>Filtrar
                 </button>
             </div>
         </form>

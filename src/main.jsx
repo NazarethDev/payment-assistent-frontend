@@ -9,7 +9,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import './api/paymentAssistentApiInterceptors.js';
 
-document.documentElement.setAttribute('data-bs-theme', 'dark');
+document.documentElement.setAttribute('data-bs-theme', 'light');
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

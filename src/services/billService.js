@@ -6,7 +6,7 @@ const UPDATE_BILL = "/bill"
 const GET_TODAY_BILLS = "/bill/today-bills";
 const DOWNLOAD_TODAY_BILLS = "/bill/download-today-bills";
 const DELETE_BILL = "/bill/delete";
-const GET_BILLS_BETWEEN = "/bills-between";
+const GET_BILLS_BETWEEN = "/bill/bills-between";
 
 export async function createBill(bill) {
     return paymentAssistentApi.post(`${API_BASE_URL}${CREATE_BILL}`, bill);
