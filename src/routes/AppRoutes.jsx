@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute.jsx";
 
 import BillsPage from "../pages/BillsPage/index.jsx";
@@ -8,6 +8,7 @@ import NewBillPage from "../pages/NewBillPage/index.jsx";
 import NewRecipientPage from "../pages/NewRecipientPage/index.jsx";
 import RecipientsPage from "../pages/RecipientsPage/index.jsx";
 import StatisticsPage from "../pages/StatisticsPage/index.jsx";
+import RecipientDetailPage from "../pages/RecipientDetailPage/index.jsx";
 
 export default function AppRoutes() {
     return (
@@ -41,6 +42,12 @@ export default function AppRoutes() {
             <Route path="/estatisticas" element={
                 <PrivateRoute>
                     <StatisticsPage />
+                </PrivateRoute>
+            } />
+
+            <Route path="/recipient/:id" element={
+                <PrivateRoute>
+                    <RecipientDetailPage />
                 </PrivateRoute>
             } />
         </Routes>

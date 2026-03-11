@@ -6,6 +6,7 @@ const UPDATE_BILL = "/bill"
 const GET_TODAY_BILLS = "/bill/today-bills";
 const DOWNLOAD_TODAY_BILLS = "/bill/download-today-bills";
 const DELETE_BILL = "/bill/delete";
+const GET_BILLS_BETWEEN = "/bills-between";
 
 export async function createBill(bill) {
     return paymentAssistentApi.post(`${API_BASE_URL}${CREATE_BILL}`, bill);
@@ -27,4 +28,10 @@ export async function downloadTodayBills() {
     return paymentAssistentApi.get(`${API_BASE_URL}${DOWNLOAD_TODAY_BILLS}`, {
         responseType: "blob"
     })
+};
+
+export async function getBillsByPeriod(start, end, page = 0) {
+    return paymentAssistentApi.get(`${API_BASE_URL}${GET_BILLS_BETWEEN}`, {
+        params: { startDate: start, endDate: end, page, size: 10 }
+    });
 };

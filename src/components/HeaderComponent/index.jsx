@@ -15,7 +15,7 @@ export default function HeaderComponent() {
 
         <nav className="navbar navbar-expand-lg w-100 overflow-x-hidden">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">Payment assistent</NavLink>
+                <NavLink className="navbar-brand" to="/home">Payment assistent</NavLink>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -29,7 +29,7 @@ export default function HeaderComponent() {
                 <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`} id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <NavLink to="/" end className={({ isActive }) =>
+                            <NavLink to="/home" end className={({ isActive }) =>
                                 isActive ? "nav-link active" : "nav-link"
                             } >Home</NavLink>
                         </li>
